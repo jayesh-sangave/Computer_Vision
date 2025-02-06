@@ -21,7 +21,7 @@ def add_noise(src):
 img_noise = add_noise(img)
 
 cv2.imshow("original", img)
-cv2.imshow("output", output)
+cv2.imshow("output", img_noise)
     
 
 
