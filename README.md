@@ -1,6 +1,6 @@
 # Computer_Vision
 
-## Convulation 
+## Convolution 
 Convolution is a mathematical transformation that consists in multiplying two signals (one of the signals is reflected and shifted). To be more accurate, here is the mathematical continuous equation of a convolution of two functions f and g
 ![CONV_1_TRANSPARENT](https://github.com/user-attachments/assets/4c01d383-87c4-4cdf-81f8-a177ba7eb010)
 
