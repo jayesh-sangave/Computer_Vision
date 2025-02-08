@@ -20,10 +20,14 @@ def add_noise(src):
 
 img_noise = add_noise(img)
 corrected_img = cv2.medianBlur(img_noise, 5)
+gaussian_blur = cv2.GaussianBlur(img_noise, (7,7), sigmaX=69, sigmaY=169)
 
 
-cv2.imshow("original", img_noise)
-cv2.imshow("output", corrected_img)
+stack = np.hstack((img_noise, corrected_img, gaussian_blur))
+
+
+# cv2.imshow("original", img_noise)
+cv2.imshow("output", stack) 
     
 
 
