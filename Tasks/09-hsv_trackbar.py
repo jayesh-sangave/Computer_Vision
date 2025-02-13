@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 
-max_count = 100
 
 img = cv2.imread("img/peppers.png")
 img = cv2.cvtColor(img, cv2.COLOR_BGR2HSV
@@ -10,6 +9,7 @@ cv2.imshow("original", img)
 cv2.namedWindow("Slider", cv2.WINDOW_AUTOSIZE)
 
 masked_img = img.copy()
+extract = img.copy()
 
 def noise(*args):
     lh = cv2.getTrackbarPos("lowerH", "Slider")
@@ -18,8 +18,9 @@ def noise(*args):
     hs = cv2.getTrackbarPos("higherS", "Slider")
     lv = cv2.getTrackbarPos("lowerV", "Slider")
     hv = cv2.getTrackbarPos("higherV", "Slider")
-    masked_img = add_mask(img, lh, hh, ls, hs, lv, hv)
+    masked_img, extract = add_mask(img, lh, hh, ls, hs, lv, hv)
     cv2.imshow("output", masked_img)
+    cv2.imshow("extract", extract)
 
 def add_mask(src, c, d, e, f, g, h):
    
@@ -29,8 +30,9 @@ def add_mask(src, c, d, e, f, g, h):
     upper_bound = np.array([d, f, h])
 
     output = cv2.inRange(src,lower_bound,upper_bound)
+    final = cv2.bitwise_and(src,src, mask = output)
 
-    return output
+    return output, final
 
 
 cv2.createTrackbar("lowerH", "Slider", 0, 255, noise)
