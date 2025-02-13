@@ -2,9 +2,10 @@ import cv2
 import numpy as np
 
 
-img = cv2.imread("img/peppers.png")
-img = cv2.cvtColor(img, cv2.COLOR_BGR2HSV
-                   )
+img = cv2.imread("img/pink.jpeg")
+img = cv2.resize(img, (300,300))
+
+# img = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 cv2.imshow("original", img)
 cv2.namedWindow("Slider", cv2.WINDOW_AUTOSIZE)
 
